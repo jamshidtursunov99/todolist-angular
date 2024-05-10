@@ -1,0 +1,14 @@
+<div class="header">
+  <span class="header__title">My TODO List</span>
+  <span class="header__actions">
+    @for (btn of buttons; track $index) {
+      <button
+        mat-button
+        [routerLink]="btn.key"
+        [routerLinkActive]="['header__btn--active']"
+      >
+        {{ btn.value }}
+      </button>
+    }
+  </span>
+</div>

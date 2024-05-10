@@ -1,0 +1,74 @@
+@import "variables";
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid $light-silver;
+  box-shadow: 0px 5px 10px $shadow-color;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    background-color: $shade-gray;
+    border: 1px solid $light-silver;
+    height: 52px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  &__table {
+    padding: 0 20px 20px;
+    box-sizing: border-box;
+  }
+}
+
+.mat-mdc-header-row {
+  height: 50px;
+}
+
+.mat-mdc-header-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-top: 1px solid $light-silver;
+  border-bottom: 1px solid $light-silver;
+
+  &:first-child {
+    border-left: 1px solid $light-silver;
+  }
+
+  &:last-child {
+    border-right: 1px solid $light-silver;
+  }
+}
+
+.mat-column-favorite {
+  width: 150px;
+  text-align: right;
+}
+
+.mat-column-remove {
+  width: 100px;
+  text-align: center;
+}
+
+.mat-column-createdAt,
+.mat-column-expireDate {
+  width: 180px;
+  text-align: right;
+}
+
+.mat-mdc-button-base {
+  border-radius: 5px !important;
+}
+
+.favorite {
+  color: $gray;
+
+  &--active {
+    color: $red;
+  }
+}

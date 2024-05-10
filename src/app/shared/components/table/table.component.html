@@ -1,0 +1,59 @@
+<div class="wrapper">
+  @if (heading) {
+    <span class="wrapper__heading">{{ heading }}</span>
+  }
+  <div class="wrapper__table">
+    <table mat-table [dataSource]="items">
+      @for (col of columns; track $index) {
+        <ng-container [matColumnDef]="col['key']">
+          <th mat-header-cell *matHeaderCellDef>{{ col["name"] }}</th>
+          <td mat-cell *matCellDef="let element">
+            @if (col["hasCheckbox"]) {
+              <mat-checkbox
+                color="primary"
+                [checked]="element.checked"
+                (change)="handleCheck(element)"
+              ></mat-checkbox>
+            }
+            @switch (col["type"]) {
+              @case (columnText) {
+                {{ element[col["key"]] }}
+              }
+              @case (columnDate) {
+                @if (col["showLeftTime"]) {
+                  <app-expire-timer [date]="element[col['key']]" />
+                } @else {
+                  {{ element[col["key"]] | date: "mediumDate" }}
+                }
+              }
+              @case (columnFavorite) {
+                <button mat-icon-button (click)="handleFavoriteCheck(element)">
+                  <mat-icon
+                    class="favorite"
+                    [class.favorite--active]="element.isFavorite"
+                  >
+                    favorite
+                  </mat-icon>
+                </button>
+              }
+              @case (columnRemove) {
+                <button
+                  mat-mini-fab
+                  color="warn"
+                  (click)="handleDelete(element)"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
+              @default {
+                {{ element[col["key"]] }}
+              }
+            }
+          </td>
+        </ng-container>
+      }
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

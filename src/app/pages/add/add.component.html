@@ -1,0 +1,45 @@
+<form [formGroup]="todoForm" class="form" (ngSubmit)="handleSubmit()">
+  <span>Add TODO</span>
+  <mat-form-field class="form__field">
+    <textarea
+      matInput
+      formControlName="title"
+      placeholder="Enter your todo"
+      required
+    ></textarea>
+    @if (titleError) {
+      <mat-error>{{ titleError }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="form__field">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="expireDate" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    @if (expireDateError) {
+      <mat-error>{{ expireDateError }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="form__field">
+    <input
+      matInput
+      [ngxTimepicker]="defaultTime"
+      formControlName="expireTime"
+      placeholder="Choose time"
+    />
+    <ngx-material-timepicker
+      #defaultTime
+      [defaultTime]="'11:59 pm'"
+    ></ngx-material-timepicker>
+  </mat-form-field>
+
+  <div class="form__actions">
+    <button mat-raised-button (click)="handleBack()">&lt; Back</button>
+    <button type="submit" mat-flat-button color="primary">Add</button>
+  </div>
+</form>

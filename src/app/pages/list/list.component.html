@@ -1,0 +1,20 @@
+<div class="list">
+  @if (isListPath() && todaysTodos().length) {
+    <app-table
+      [items]="todaysTodos()"
+      [columns]="columnsToday"
+      [expireDateFormat]="hours"
+      [heading]="tableHeading.recent"
+      (onChange)="handleTodoCheck($event)"
+      (onDelete)="handleDeleteTodo($event)"
+    />
+  }
+  <app-table
+    [items]="isListPath() ? restTodos() : favoriteTodos()"
+    [columns]="columnsAll"
+    [expireDateFormat]="date"
+    [heading]="tableHeading.all"
+    (onChange)="handleTodoCheck($event)"
+    (onDelete)="handleDeleteTodo($event)"
+  ></app-table>
+</div>

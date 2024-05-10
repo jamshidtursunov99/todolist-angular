@@ -1,0 +1,30 @@
+@import "variables";
+
+$header-height: 70px;
+
+.layout {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+
+  &__header {
+    height: $header-height;
+  }
+
+  &__outlet {
+    height: calc(100% - $header-height);
+    padding: 30px 200px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $light-gray;
+      outline: none;
+      border-radius: 4px;
+      border-color: $light-gray;
+    }
+  }
+}

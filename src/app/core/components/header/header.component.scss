@@ -1,0 +1,18 @@
+@import "variables";
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
+  padding: 0 200px;
+  box-sizing: border-box;
+  background-color: $shade-gray;
+
+  &__btn {
+    &--active {
+      color: $peachy !important;
+    }
+  }
+}
